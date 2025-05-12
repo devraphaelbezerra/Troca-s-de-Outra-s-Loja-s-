@@ -3,6 +3,44 @@
 **Controle de trocas em filiais diferentes via processo Fluig integrado com TOTVS RMS.**
 
 Este repositório documenta a modelagem e o controle de trocas onde a compra foi realizada em uma filial e a devolução/troca ocorre em outra. Processo visa evitar furos de estoque, garantir a rastreabilidade fiscal e criar uma trilha auditável entre as filiais envolvidas.
+
+**Exemplo prático:**
+O cliente comprou na **Filial DUQUE**, mas vai trocar o produto na **Filial CIDADE NOVA**.
+
+---
+
+### 🧩 **Passo a passo sistemático (ideal com TOTVS RMS + TOTVS Fluig):**
+#### **1. Venda na loja original (Filial DUQUE 1-9)**
+* O produto é vendido e sai do estoque da Filial DUQUE 1-9.
+* A nota fiscal de venda é emitida para o cliente.
+
+#### **2. Solicitação de troca em outra loja (Filial CIDADE NOVA 3-5)**
+* O cliente comparece com a nota da DUQUE 1-9 na loja CIDADE NOVA 3-5.
+* O atendente consulta a nota original no RMS (via tab\_nota\_header / tab\_item\_nota).
+* Se a troca for autorizada, o sistema precisa **“devolver” o item à DUQUE** e **“tirar” um novo da CIDADE NOVA**.
+
+##### **A. Criação de uma nota de entrada (troca) na loja que está recebendo (CIDADE NOVA 3-5):**
+* Emitir uma **nota de entrada simbólica**(Agenda de Entrada NF) na CIDADE NOVA 3-5, referenciando a nota original (emitida pela DUQUE 1-9).
+* Essa nota devolve formalmente o item ao sistema.
+
+##### **B. Transferência de estoque entre filiais (afim de ajustar estoques reais):**
+* Criar uma **nota de transferência entre filiais** (ex: de CIDADE NOVA 3-5 para DUQUE 1-9 ou vice-versa).
+* Corrige o estoque para onde o item deve ficar fisicamente.
+
+##### **C. Nova saída de produto (caso troca por outro item):**
+* CIDADE NOVA emite uma nova **nota de saída** com o novo item entregue ao cliente.
+* Se houver diferença de valor, é feito pagamento ou devolução de troco.
+
+##### **D. Registro de processo no Fluig (ou outro controle interno):**
+* Fluig registra toda a troca com dados: filial origem, destino, produto, motivo da troca, operador e autorizações.
+* Fica como rastreabilidade e controle de fraudes.
+
+---
+
+### 💡 Resumo técnico:
+> “Para uma troca entre filiais funcionar corretamente, é necessário fazer uma entrada referenciada na nova filial, ajustar os estoques com transferências simbólicas, emitir nova nota fiscal se houver novo item, e registrar o processo com rastreabilidade (via Fluig ou controle interno). Isso garante integridade de estoque, fiscal e segurança operacional.”
+
+---
 ![Sem título](https://github.com/user-attachments/assets/f10a9da1-a4e4-4a21-b779-cb94db303a68)
 
 ---
