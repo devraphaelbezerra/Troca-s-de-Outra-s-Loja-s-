@@ -51,13 +51,19 @@ Este repositório documenta a modelagem e o controle de trocas onde a compra foi
   * Quantidade(s).
 
 ### 4. Geração de Movimentação Interfilial
-![Sem título](https://github.com/user-attachments/assets/70467727-f2c5-4907-a818-f0995728cd4a)
+![Sem título](https://github.com/user-attachments/assets/0fc75d03-0a4c-4a96-a245-d1a90a4dbac3)
 
 * Geração automática ou manual de:
   * Registros na tabela do Fluig com campos no banco para controle de processamentos.
   * Uma rotina do RMS é executada em turnos diferentes varrendos as tabelas que precisam gerar o ajuste de transferências.
   * Nota de transferência entre filiais.
   * Ajuste de estoque ou movimentação contábil.
+   
+---
+ * Exemplo voucher de troca:
+ * ![Sem título-1](https://github.com/user-attachments/assets/132f9c3f-6b31-48f6-8773-b501135fd8b6)
+
+---
 
 ## 🛠️ Tecnologias utilizadas
 * TOTVS Fluig (Widget, Dataset, BPM, Mobile)
